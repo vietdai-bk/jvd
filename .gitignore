@@ -1,0 +1,40 @@
+# .gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+evidence/
+violations/
+logs/
+screenshots/
+checkpoints/
+*.mp4
+*.jpg
+*.png
+*.avi
+
+# Model files
+*.pt
+*.pth
+*.onnx
+*.bin
+*.xml
+
+# OS
+.DS_Store
+Thumbs.db

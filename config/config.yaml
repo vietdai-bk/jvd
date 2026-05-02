@@ -1,0 +1,62 @@
+model:
+  path: checkpoints/yolo26n_int8_openvino_model
+  conf_threshold: 0.3
+  iou_threshold: 0.5
+  classes:
+  - 2
+  - 3
+  - 5
+  - 7
+tracking:
+  history_len: 30
+  max_stale_frames: 120
+  smoothing_alpha: 0.35
+  velocity_calc_lookback: 15
+  min_history_for_velocity: 5
+violation:
+  stop_velocity_thresh: 15.0
+  violation_time_sec: 3.0
+  block_dist_thresh: 50.0
+  block_hiou_thresh: 0.3
+  stop_buffer_frames: 15
+  velocity_calc_lookback: 15
+display:
+  max_width: 1280
+  max_height: 720
+  show_legend: true
+  update_interval_fps: 30
+  resize_scale: 0.5
+roi:
+  points:
+  - - 0.9926
+    - 0.8083
+  - - 0.6444
+    - 0.5222
+  - - 0.3235
+    - 0.5278
+  - - 0.0
+    - 0.7361
+  - - 0.0099
+    - 0.9917
+  - - 0.9877
+    - 0.9889
+video:
+  path: data/videos/video_test2.mp4
+evidence:
+  output_dir: evidence
+  pre_seconds: 3.0
+  post_seconds: 10.0
+plate:
+  model_path: checkpoints/license_plate_int8_openvino_model
+  conf: 0.1
+  ocr_lang: en
+  cache_frames: 30
+  padding: 5
+  pad_ratio: 0.2
+  debug: true
+location:
+  lat: 10.7769
+  lon: 106.7009
+  name: Nguyen Trai - Le Van Sy Intersection
+logging:
+  csv_dir: logs
