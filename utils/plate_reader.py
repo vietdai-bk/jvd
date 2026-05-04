@@ -321,28 +321,17 @@ class PlateReader:
         enhanced = _enhance_plate(plate_crop)
         
         try:
-            # Truyền cls=False vì không dùng model phân loại góc
             result = self._ocr.ocr(enhanced, cls=False)
-            
-            # Print debug để chắc chắn format nhận được
-            # print(f"Raw OCR result: {result}") 
-
+        
             if not result or not result[0]:
                 return ""
                 
             texts = []
-            
-            # Cấu trúc của result thường là: [  [ [box], (text, score) ], [ [box], (text, score) ]  ]
-            # Ta duyệt qua các dòng trong result[0]
             for line in result[0]:
-                # Kiểm tra an toàn: line phải là list/tuple có ít nhất 2 phần tử
-                # Phần tử thứ 2 (line[1]) phải là tuple chứa (text, confidence)
                 if isinstance(line, (list, tuple)) and len(line) >= 2:
                     text_tuple = line[1]
                     if isinstance(text_tuple, (list, tuple)) and len(text_tuple) > 0:
-                        text = str(text_tuple[0]) # Ép kiểu về string để đảm bảo an toàn cho regex
-                        
-                        # Xóa các ký tự không cần thiết (dấu gạch ngang, chấm, khoảng trắng)
+                        text = str(text_tuple[0])
                         text = re.sub(r'[-. ]', '', text)
                         texts.append(text)
             

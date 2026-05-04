@@ -53,7 +53,7 @@ plate:
   cache_frames: 30
   padding: 5
   pad_ratio: 0.2
-  debug: true
+  debug: false
 location:
   lat: 10.7769
   lon: 106.7009

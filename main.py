@@ -94,6 +94,8 @@ def main():
     width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps_video = cap.get(cv2.CAP_PROP_FPS) or 25.0
+    total_frame = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    print(total_frame)
     config['video']['fps'] = fps_video
 
     p_ocr = mp.Process(target=ocr_worker, args=(ocr_queue, shared_plate_cache, config))

@@ -112,7 +112,7 @@ class _PostRecorder:
         self._post_needed = post_frames_needed
         self._post_received = 0
         self._done = False
-        self._size = size  # (width, height) — lưu lại để dùng khi resize
+        self._size = size
 
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
         self._writer = cv2.VideoWriter(path, fourcc, fps, size)
@@ -132,7 +132,6 @@ class _PostRecorder:
         fh, fw = frame.shape[:2]
         tw, th = self._size  # target width, height
         if fw != tw or fh != th:
-            # Chỉ resize nếu target hợp lệ
             if tw > 0 and th > 0:
                 frame = cv2.resize(frame, (tw, th), interpolation=cv2.INTER_AREA)
             else:
