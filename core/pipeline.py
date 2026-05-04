@@ -52,7 +52,6 @@ class JunctionDetectorPipeline:
         """Run YOLO detection and tracking on frame"""
         model_config = self.config['model']
 
-        # BUG FIX: Dùng đúng conf từ config, không override ngầm
         conf_thresh = model_config.get('conf_threshold', 0.3)
 
         results = self.model.track(
